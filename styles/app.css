@@ -1,0 +1,10 @@
+body {
+  width: 950px;
+  margin: 0 auto;
+}
+
+li {
+  margin-bottom: 30px;
+  padding-bottom: 100px;
+  border: 1px solid cyan;
+}
