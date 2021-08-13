@@ -1,17 +1,18 @@
+/*
+TODO:
+
+2. Function for creating components (?) and inserting them
+ */
+
 const target = document.querySelector('#target');
-const options = {
-  rootMargin: '0px',
-  threshold: 0.3 // extent of target visibility when firing callback
-};
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (!entry.isIntersecting) return;
+const observer = new IntersectionObserver(async (entries) => {
+  const [target] = entries;
+  if (!target.isIntersecting) return;
 
-    fetch('/get-dresses.php')
-      .then(response => response.json())
-      .then(dresses => console.log(dresses))
-    ;
-  });
-}, options);
+  const response = await fetch('/get-dresses.php');
+  const dresses = await response.json();
+
+  console.log(dresses);
+});
 observer.observe(target);
